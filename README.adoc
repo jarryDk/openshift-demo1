@@ -1,0 +1,5 @@
+= openshift-demo1
+
+openshift-demo1
+
+https://console.starter-us-west-1.openshift.com/[Console - openshift.com]
