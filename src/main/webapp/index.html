@@ -29,7 +29,7 @@ if(typeof(EventSource) !== "undefined") {
 <div id="socketResult"></div>
 
 <script>
-var wsUri = (document.location.port == "8443"? "wss":"ws") +"://" + document.location.hostname + ":" + document.location.port + "/wf14-test/" + "ping";
+var wsUri = (document.location.port == "443"? "wss":"ws") +"://" + document.location.hostname + ":" + document.location.port + "/" + "ping";
 
 var websocket = new WebSocket(wsUri);
 
