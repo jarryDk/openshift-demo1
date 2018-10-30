@@ -16,3 +16,10 @@ cd mineshift-tmp
 wget https://raw.githubusercontent.com/openshift-s2i/s2i-wildfly/master/imagestreams/wildfly-centos7.json
 oc create -f wildfly-centos7.json -n openshift
 ----
+
+== Ping from curl
+
+[source,bash]
+----
+curl -H "Accept:text/event-stream" http://<HOST_PORT_WEBAPP>/resources/ping/register
+----
