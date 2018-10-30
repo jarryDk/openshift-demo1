@@ -3,3 +3,16 @@
 openshift-demo1
 
 https://console.starter-us-west-1.openshift.com/[Console - openshift.com]
+
+== Add Wildfly to Minishift
+
+We add wildfly-centos7 to namespace openshift
+
+[source,bash]
+----
+oc login -usystem:admin
+mkdir mineshift-tmp
+cd mineshift-tmp
+wget https://raw.githubusercontent.com/openshift-s2i/s2i-wildfly/master/imagestreams/wildfly-centos7.json
+oc create -f wildfly-centos7.json -n openshift
+----
