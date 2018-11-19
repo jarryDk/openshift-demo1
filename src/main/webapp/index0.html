@@ -2,47 +2,17 @@
 <html lang="da">
 
 <head>
-  <title>OpenShift demo1</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>openshift-demo1</title>
 </head>
 
 <body>
 
-<main>
-
-  <header>OpenShift demo1</header>
-
-  <nav>
-    <a href="#">Home</a><br>
-    <a href="#">JAX-RS</a>
-  </nav>
-
-  <section>
-
-    <article>
-      <h1>Getting server updates</h1>
-      <div id="sseResult"></div>
-    </article>
-
-    <article>
-      <h1>Getting socket updates</h1>
-      <div id="socketResult"></div>
-    </article>
-
-  </section>
-
-  <footer>
-    <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>
-  </footer>
-
-</main>
+<h1>Getting server updates</h1>
+<div id="sseResult"></div>
 
 <script>
-/**
-* Getting server updates
-*/
 if(typeof(EventSource) !== "undefined") {
     var source = new EventSource("resources/ping/register");
     source.onmessage = function(event) {
@@ -53,10 +23,12 @@ if(typeof(EventSource) !== "undefined") {
 }
 </script>
 
+<hr>
+
+<h1>Getting socket updates</h1>
+<div id="socketResult"></div>
+
 <script>
-/**
-* Getting socket updates
-*/
 var wsUri = (document.location.port == "443"? "wss":"ws") +"://" + document.location.hostname + ":" + document.location.port + "/" + "ping";
 
 var websocket = new WebSocket(wsUri);
@@ -70,13 +42,13 @@ var output = document.getElementById("socketResult");
 function onOpen(evt) {
     writeToScreen("Connected to " + wsUri);
     console.log(evt);
-    var input = JSON.parse(evt.data);
+    var input = JSON.parse(evt.data);	
     writeToScreen(input.message);
 }
 
 function onMessage(evt) {
-	console.log("data : " + evt.data);
-	var input = JSON.parse(evt.data);
+	console.log("data : " + evt.data);	
+	var input = JSON.parse(evt.data);	
 	writeToScreen(input.message);
 }
 
