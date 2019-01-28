@@ -1,5 +1,7 @@
 package dk.jarry.openshift.demo1.ping.boundary;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Logger;
@@ -47,12 +49,21 @@ public class PingResource {
 	}
 
 	@GET
-	public Response getPing() {
-		InetAddress inetAddress = InetAddress.getLocalHost();
+	public Response getPing() {		
 
 		String message = ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
-		message += " :: HostAddress : " + inetAddress.getHostAddress();
-		message += " :: HostName : " + inetAddress.getHostName();
+		
+		try {
+			InetAddress inetAddress = InetAddress.getLocalHost();
+			message += " :: HostAddress : " + inetAddress.getHostAddress();
+			message += " :: HostName : " + inetAddress.getHostName();	
+		} catch (UnknownHostException e) {
+			message += " :: " + e.getMessage();
+		} finally {
+			// TODO: handle finally clause
+		}
+		
+		
 		return Response.ok(pingService.getPing(message)).build();
 	}
 
