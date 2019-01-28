@@ -17,7 +17,7 @@ wget https://raw.githubusercontent.com/openshift-s2i/s2i-wildfly/master/imagestr
 oc create -f wildfly-centos7.json -n openshift
 ----
 
-== Update/replace Wildfly to Minishift
+== Update/replace Wildfly on Minishift
 
 We replcase wildfly-centos7 in namespace openshift
 
