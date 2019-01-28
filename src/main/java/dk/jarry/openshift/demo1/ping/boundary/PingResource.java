@@ -60,7 +60,6 @@ public class PingResource {
 		} catch (UnknownHostException e) {
 			message += " :: " + e.getMessage();
 		} finally {
-			// TODO: handle finally clause
 		}
 		
 		

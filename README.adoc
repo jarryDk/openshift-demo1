@@ -34,5 +34,10 @@ oc replace -f wildfly-centos7.json -n openshift
 
 [source,bash]
 ----
-curl -H "Accept:text/event-stream" http://<HOST_PORT_WEBAPP>/resources/ping/register
+curl -H "Accept:text/event-stream" http://<HOST_PORT_WEBAPP>/resources/ping
+----
+
+[source,bash]
+----
+curl -H "Accept:text/event-stream" http://<HOST_PORT_WEBAPP>/resources/ping/message/foo
 ----
