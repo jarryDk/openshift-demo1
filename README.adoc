@@ -17,6 +17,19 @@ wget https://raw.githubusercontent.com/openshift-s2i/s2i-wildfly/master/imagestr
 oc create -f wildfly-centos7.json -n openshift
 ----
 
+== Update/replace Wildfly to Minishift
+
+We replcase wildfly-centos7 in namespace openshift
+
+[source,bash]
+----
+oc login -usystem:admin
+mkdir mineshift-tmp
+cd mineshift-tmp
+wget https://raw.githubusercontent.com/openshift-s2i/s2i-wildfly/master/imagestreams/wildfly-centos7.json
+oc replace -f wildfly-centos7.json -n openshift
+----
+
 == Ping from curl
 
 [source,bash]
