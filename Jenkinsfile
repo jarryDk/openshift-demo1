@@ -11,7 +11,7 @@ pipeline {
         steps {
           sh 'oc login -usystem:admin'
           sh 'oc project shiftdemo'
-          sh 'oc project shiftdemo start-build demo1 --from-file=target/ROOT.war'
+          sh 'oc start-build demo1 --from-file=target/ROOT.war'
         }
       }
 
