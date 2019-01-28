@@ -48,7 +48,11 @@ public class PingResource {
 
 	@GET
 	public Response getPing() {
+		InetAddress inetAddress = InetAddress.getLocalHost();
+
 		String message = ZonedDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
+		message += " :: HostAddress : " + inetAddress.getHostAddress();
+		message += " :: HostName : " + inetAddress.getHostName();
 		return Response.ok(pingService.getPing(message)).build();
 	}
 
